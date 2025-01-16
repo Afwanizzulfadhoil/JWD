@@ -1,0 +1,15 @@
+|-JWD
+    |-assets
+    |-img
+        |-Lingkaran.jpg
+        |-Persegi-panjang.jpg
+        |-Persegi.jpg
+        |-Segitiga.jpg
+    |-node_modules
+        |-express
+|-history.json
+|-index.html
+|-package-lock.json
+|-package.json
+|-README
+|-server.js

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Name : Afwan Izzul Fadhoil -->
+<!-- Kelas : XII TKJ 3 -->
+<!-- Jurusan : Teknik Komputer dan Jaringan (TKJ) -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekolah A</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Menghitung Luas dan Keliling</h1>
+        <!-- untuk menampilkan gambar -->
+        <div class="row align-items-start text-center"> 
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="/assets/img/lingkaran.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Lingkaran</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="/assets/img/Persegi-Panjang.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Persegi Panjang</h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="/assets/img/persegi.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Persegi</h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="/assets/img/segitiga.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Segitiga</h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- memilih bangun dan jenis hitungan -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                Pilih Bangun datar
+            </div>
+            <div class="card-body">
+                <form id="form-hitung">
+                    <div class="mb-3">
+                        <label for="bangun-datar" class="form-label">Pilih Bangun Datar:</label>
+                        <select class="form-select" id="bangun-datar">
+                            <option value="">-- Pilih Bangun Datar --</option>
+                            <option value="persegi">Persegi</option>
+                            <option value="persegi-panjang">Persegi Panjang</option>
+                            <option value="lingkaran">Lingkaran</option>
+                            <option value="segitiga">Segitiga</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jenis-hitung" class="form-label">Pilih Jenis Hitungan:</label>
+                        <select class="form-select" id="jenis-hitung">
+                            <option value="">-- Pilih Jenis Hitungan --</option>
+                            <option value="luas">Luas</option>
+                            <option value="keliling">Keliling</option>
+                        </select>
+                    </div>
+                    <div id="input-fields" class="mb-3">
+                        <!-- Dynamic input fields will be inserted here -->
+                    </div>
+                    <button id="calculate" type="submit" class="btn btn-primary">Hitung</button>
+                </form>
+                <div id="result" class="mt-3"></div>
+            </div>
+        </div>
+        <!-- untuk menampilakan History penghitungan -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nama bangun</th>
+                    <th scope="col">Jenis Hitungan</th>
+                    <th scope="col">Hasil Hitungan</th>
+                    <th scope="col">Tanggal/Hari/waktu</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- link script javascript Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const inputFields = $('#input-fields'); 
+            loadHistory(); // untuk menampilkan Hsitory ke tab
+
+            // Event handler untuk memunculkan input form sesuai dengan bangun datar
+            $('#bangun-datar').change(function () {
+                const shape = $(this).val();
+                inputFields.empty();
+
+                switch (shape) {
+                    case 'persegi':
+                        inputFields.append('<label for="sisi" class="form-label">Sisi:</label><input type="number" id="sisi" class="form-control" placeholder="Masukkan panjang sisi">');
+                        break;
+                    case 'persegi-panjang':
+                        inputFields.append('<label for="panjang" class="form-label">Panjang:</label><input type="number" id="panjang" class="form-control" placeholder="Masukkan panjang">');
+                        inputFields.append('<label for="lebar" class="form-label mt-2">Lebar:</label><input type="number" id="lebar" class="form-control" placeholder="Masukkan lebar">');
+                        break;
+                    case 'lingkaran':
+                        inputFields.append('<label for="jari-jari" class="form-label">Jari-jari:</label><input type="number" id="jari-jari" class="form-control" placeholder="Masukkan jari-jari">');
+                        break;
+                    case 'segitiga':
+                        inputFields.append(`
+                                <div class="form-group">
+                                    <label for="alas" class="form-label">Alas:</label>
+                                    <input type="number" id="alas" class="form-control" placeholder="Masukkan alas">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tinggi" class="form-label mt-2">Tinggi:</label>
+                                    <input type="number" id="tinggi" class="form-control" placeholder="Masukkan tinggi">
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label for="sisi1" class="form-label mt-2">Sisi 1:</label>
+                                    <input type="number" id="sisi1" class="form-control" placeholder="Masukkan panjang sisi 1">
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label for="sisi2" class="form-label mt-2">Sisi 2:</label>
+                                    <input type="number" id="sisi2" class="form-control" placeholder="Masukkan panjang sisi 2">
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label for="sisi3" class="form-label mt-2">Sisi 3:</label>
+                                    <input type="number" id="sisi3" class="form-control" placeholder="Masukkan panjang sisi 3">
+                                </div>
+                            `);
+                        break;
+
+
+
+                }
+            });
+
+            // Untuk visible jenis-hitung utnuk segitiga
+            $('#jenis-hitung').change(function () {
+                const calculationType = $(this).val();
+                const shape = $('#bangun-datar').val();
+
+                if (shape === 'segitiga') {
+                    if (calculationType === 'luas') {
+                        $('#alas, #tinggi').closest('.form-group').show(); // Menampilkan input alas dan tinggi
+                        $('#sisi1, #sisi2, #sisi3').closest('.form-group').hide(); // Menyembunyikan input sisi 1, 2, 3
+                    } else if (calculationType === 'keliling') {
+                        $('#alas, #tinggi').closest('.form-group').hide(); // Menyembunyikan input alas dan tinggi
+                        $('#sisi1, #sisi2, #sisi3').closest('.form-group').show(); // Menampilkan input sisi 1, 2, 3
+                    } else {
+                        $('#input-fields').children().hide(); // Jika belum memilih jenis hitungan, sembunyikan semua input
+                    }
+                }
+            });
+
+
+            // Event handler untuk menghitung berdasarkan input
+            $('#form-hitung').submit(function (event) {
+                event.preventDefault();
+
+                const shape = $('#bangun-datar').val();
+                const calculationType = $('#jenis-hitung').val();
+                let result = '';
+
+                if (!shape || !calculationType) {
+                    alert('Harap pilih bangun datar dan jenis hitungan.'); // pengecekan apakah sudah memilih value dari kedua 
+                    return;
+                }
+
+
+                switch (shape) {
+                    // untuk menghitung persegi
+                    case 'persegi':
+                        const sisi = parseFloat($('#sisi').val());
+                        if (!isNaN(sisi)) {
+                            if (calculationType === 'luas') {
+                                result = `Luas Persegi: ${sisi * sisi}`;
+                            } else {
+                                result = `Keliling Persegi: ${4 * sisi}`;
+                            }
+                        } else {
+                            result = 'Harap masukkan panjang sisi yang valid.';
+                        }
+                        break;
+                    
+                    // untuk menghitung persegi panjang
+                    case 'persegi-panjang':
+                        const panjang = parseFloat($('#panjang').val());
+                        const lebar = parseFloat($('#lebar').val());
+                        if (!isNaN(panjang) && !isNaN(lebar)) {
+                            if (calculationType === 'luas') {
+                                result = `Luas Persegi Panjang: ${panjang * lebar}`;
+                            } else {
+                                result = `Keliling Persegi Panjang: ${2 * (panjang + lebar)}`;
+                            }
+                        } else {
+                            result = 'Harap masukkan panjang dan lebar yang valid.';
+                        }
+                        break;
+                    
+                    // untuk penghitung lingkaran 
+                    case 'lingkaran':
+                        const jariJari = parseFloat($('#jari-jari').val());
+                        if (!isNaN(jariJari)) {
+                            if (calculationType === 'luas') {
+                                result = `Luas Lingkaran: ${(Math.PI * jariJari * jariJari).toFixed(2)}`; //PI = 3.14 
+                            } else {
+                                result = `Keliling Lingkaran: ${(2 * Math.PI * jariJari).toFixed(2)}`;
+                            }
+                        } else {
+                            result = 'Harap masukkan jari-jari yang valid.';
+                        }
+                        break;
+
+                    // untuk penghitungan segitiga
+                    case 'segitiga':
+                        const alas = parseFloat($('#alas').val());
+                        const tinggi = parseFloat($('#tinggi').val());
+                        const sisi1 = parseFloat($('#sisi1').val());
+                        const sisi2 = parseFloat($('#sisi2').val());
+                        const sisi3 = parseFloat($('#sisi3').val());
+
+                        if (calculationType === 'luas') {
+                            if (!isNaN(alas) && !isNaN(tinggi)) {
+                                result = `Luas Segitiga: ${(0.5 * alas * tinggi).toFixed(2)}`;
+                            } else {
+                                result = 'Harap masukkan alas dan tinggi yang valid.';
+                            }
+                        } else if (calculationType === 'keliling') {
+                            if (!isNaN(sisi1) && !isNaN(sisi2) && !isNaN(sisi3)) {
+                                result = `Keliling Segitiga: ${(sisi1 + sisi2 + sisi3).toFixed(2)}`;
+                            } else {
+                                result = 'Harap masukkan panjang ketiga sisi yang valid.';
+                            }
+                        }
+                        break;
+
+
+                    default:
+                        result = 'Harap pilih bangun datar.';
+                }
+
+                $('#result').text(result);
+
+                saveHistory(shape, calculationType, result);
+
+            });
+
+
+            // untuk save Penghitungan ke History.json
+            function saveHistory(shape, calculationType, result) {
+                if (!result) {
+                    alert('Perhitungan gagal. Data tidak valid.');
+                    return;
+                }
+
+                $.ajax({
+                    url: 'http://localhost:8080/save-history',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ shape, calculationType, result }),
+                    success: function (response) {
+                        alert('Berhasil menyimpan history!');
+                        loadHistory(); // Refresh riwayat
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Gagal menyimpan history: ' + (xhr.responseText || error));
+                    }
+                });
+            }
+
+            // untuk Mengambil penghitungan dari History.json
+            function loadHistory() {
+                $.ajax({
+                    url: 'http://localhost:8080/history',
+                    method: 'GET',
+                    success: function (data) {
+                        const tableBody = $('table.table tbody');
+                        tableBody.empty();
+
+                        if (!data || data.length === 0) {
+                            tableBody.append('<tr><td colspan="4" class="text-center">Tidak ada riwayat</td></tr>');
+                            return;
+                        }
+
+                        data.forEach(entry => {
+                            const row = `
+                    <tr>
+                        <th scope="row">${entry.id}</th>
+                        <td>${entry.shape}</td>
+                        <td>${entry.calculationType}</td>
+                        <td>${entry.result}</td>
+                        <td>${new Date(entry.time).toLocaleString()}</td>
+                    </tr>`;
+                            tableBody.append(row);
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error memuat riwayat:', xhr.responseText || error);
+                        const tableBody = $('table.table tbody');
+                        tableBody.empty();
+                        tableBody.append('<tr><td colspan="4" class="text-center text-danger">Gagal memuat riwayat</td></tr>');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

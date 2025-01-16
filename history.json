@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "shape": "persegi-panjang",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi Panjang: 48"
+  },
+  {
+    "id": 2,
+    "shape": "persegi-panjang",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi Panjang: 2448"
+  },
+  {
+    "id": 3,
+    "shape": "persegi-panjang",
+    "calculationType": "luas",
+    "result": "Luas Persegi Panjang: 144"
+  },
+  {
+    "id": 4,
+    "shape": "lingkaran",
+    "calculationType": "luas",
+    "result": "Luas Lingkaran: 254.47"
+  },
+  {
+    "id": 5,
+    "shape": "persegi-panjang",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi Panjang: 40"
+  },
+  {
+    "id": 6,
+    "shape": "persegi-panjang",
+    "calculationType": "luas",
+    "result": "Luas Persegi Panjang: 1080",
+    "time": "2025-01-16T02:33:19.452Z"
+  },
+  {
+    "id": 7,
+    "shape": "persegi",
+    "calculationType": "luas",
+    "result": "Luas Persegi: 81",
+    "time": "2025-01-16T02:40:55.398Z"
+  },
+  {
+    "id": 8,
+    "shape": "segitiga",
+    "calculationType": "keliling",
+    "result": "Keliling Segitiga memerlukan informasi sisi lainnya.",
+    "time": "2025-01-16T03:10:23.592Z"
+  },
+  {
+    "id": 9,
+    "shape": "segitiga",
+    "calculationType": "keliling",
+    "result": "Keliling Segitiga memerlukan informasi sisi lainnya.",
+    "time": "2025-01-16T03:10:44.968Z"
+  },
+  {
+    "id": 10,
+    "shape": "segitiga",
+    "calculationType": "keliling",
+    "result": "Harap masukkan alas dan tinggi yang valid.",
+    "time": "2025-01-16T03:22:08.758Z"
+  },
+  {
+    "id": 11,
+    "shape": "segitiga",
+    "calculationType": "keliling",
+    "result": "Keliling Segitiga: 24.00",
+    "time": "2025-01-16T03:32:34.773Z"
+  },
+  {
+    "id": 12,
+    "shape": "persegi",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi: 40",
+    "time": "2025-01-16T04:22:43.111Z"
+  },
+  {
+    "id": 13,
+    "shape": "persegi-panjang",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi Panjang: 54",
+    "time": "2025-01-16T04:23:13.117Z"
+  },
+  {
+    "id": 14,
+    "shape": "segitiga",
+    "calculationType": "keliling",
+    "result": "Keliling Segitiga: 22.00",
+    "time": "2025-01-16T04:27:48.380Z"
+  },
+  {
+    "id": 15,
+    "shape": "segitiga",
+    "calculationType": "luas",
+    "result": "Luas Segitiga: 5.00",
+    "time": "2025-01-16T04:54:33.381Z"
+  },
+  {
+    "id": 16,
+    "shape": "persegi-panjang",
+    "calculationType": "luas",
+    "result": "Luas Persegi Panjang: 54",
+    "time": "2025-01-16T05:56:16.296Z"
+  },
+  {
+    "id": 17,
+    "shape": "persegi",
+    "calculationType": "luas",
+    "result": "Luas Persegi: 1",
+    "time": "2025-01-16T12:54:49.487Z"
+  }
+]
