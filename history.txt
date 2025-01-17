@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": 1,
+    "shape": "persegi-panjang",
+    "calculationType": "luas",
+    "result": "Luas Persegi Panjang: 4",
+    "time": "2025-01-17T01:22:47.596Z"
+  },
+  {
+    "id": 2,
+    "shape": "persegi-panjang",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi Panjang: 62",
+    "time": "2025-01-17T01:24:07.252Z"
+  },
+  {
+    "id": 3,
+    "shape": "lingkaran",
+    "calculationType": "luas",
+    "result": "Luas Lingkaran: 452.39",
+    "time": "2025-01-17T02:37:54.995Z"
+  },
+  {
+    "id": 4,
+    "shape": "persegi-panjang",
+    "calculationType": "keliling",
+    "result": "Keliling Persegi Panjang: 48",
+    "time": "2025-01-17T03:51:51.223Z"
+  }
+]

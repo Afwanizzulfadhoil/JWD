@@ -5,6 +5,14 @@ const cors = require('cors');
 
 const app = express();
 const historyFilePath = path.join(__dirname, 'history.txt');
+const statistics = {
+    persegi: 0,
+    'persegi-panjang': 0,
+    lingkaran: 0,
+    segitiga: 0,
+};
+
+
 
 // Middleware
 app.use(cors({ origin: 'http://127.0.0.1:5501' })); // memastikan origin sesuai dengan frontend Anda
@@ -33,6 +41,13 @@ app.post('/save-history', (req, res) => {
         const newEntry = { id: history.length + 1, shape, calculationType, result, time: new Date().toISOString() };
         history.push(newEntry);
 
+        if (statistics.hasOwnProperty(shape)) {
+            statistics[shape]++;
+        } else {
+            statistics[shape] = 1; // Menambahkan kategori baru jika belum ada
+        }
+        
+
         fs.writeFile(historyFilePath, JSON.stringify(history, null, 2), (err) => {
             if (err) {
                 console.error('Gagal menyimpan history:', err);
@@ -57,6 +72,11 @@ app.get('/history', (req, res) => {
     });
 });
 
+app.get('/statistics', (req, res) => {
+    res.json({ statistics });
+});
+
+
 
 // Menjalankan server
-app.listen(8080, () => console.log('Server listening on port 8080 CUYY'));
+app.listen(8080, () => console.log('Server listening on http://localhost:8080 CUYY'));
