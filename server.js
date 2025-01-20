@@ -72,6 +72,7 @@ app.get('/history', (req, res) => {
     });
 });
 
+//
 app.get('/statistics', (req, res) => {
     res.json({ statistics });
 });
